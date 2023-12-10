@@ -14,7 +14,7 @@ app.use(boddParser.urlencoded({ extended: true }))
 app.use(expressSession({ secret: 'mySecretKey', resave: true, saveUninitialized: false }))
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://chicagocrimes-next-mysql.vercel.app/',
     credentials: true
 }))
 
