@@ -30,6 +30,8 @@ const ChicagoCrimes = () => {
         axios.get('https://node-mysql-chicagocrimes.onrender.com/getChicago')
         .then(res => {
             setData(res.data);
+            console.log('Hello')
+            console.log(res.data)
             toast.success('Crime records loaded!');
         })
         .catch(er => console.log(er))
@@ -120,10 +122,10 @@ const ChicagoCrimes = () => {
 
             </form>
           </div>
-<div class="flex flex-col">
-  <div class="-m-1.5 overflow-x-auto">
-    <div class="p-1.5 min-w-full inline-block align-middle">
-      <div class="overflow-hidden">
+<div className="flex flex-col">
+  <div className="-m-1.5 overflow-x-auto">
+    <div className="p-1.5 min-w-full inline-block align-middle">
+      <div className="overflow-hidden">
           <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
             <thead>
               <tr>
