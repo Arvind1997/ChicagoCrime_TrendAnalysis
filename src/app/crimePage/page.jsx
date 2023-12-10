@@ -24,19 +24,19 @@ const table = () => {
   
 
   useEffect(() => {
-    axios.get('http://localhost:3001/getUsers')
+    axios.get('https://node-mysql-chicagocrimes.onrender.com/getUsers')
     .then(res => {setData(res.data);})
     .catch(er => toast.error(er))
   }, [])
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:3001/location',
+    axios.post('https://node-mysql-chicagocrimes.onrender.com/location',
     {
       Location_ID: id,
       Location_Description: location,
     }).then(res =>{
-      axios.get('http://localhost:3001/getUsers')
+      axios.get('https://node-mysql-chicagocrimes.onrender.com/getUsers')
       .then(res => {setData(res.data); 
         toast.success("Location added!")
       })
@@ -46,7 +46,7 @@ const table = () => {
   }
 
   const handleEdit = (id) => {
-    axios.get('http://localhost:3001/getUsers', { Location_ID: editID })
+    axios.get('https://node-mysql-chicagocrimes.onrender.com/getUsers', { Location_ID: editID })
     .then(res => {
       usetLocation(res.data.Location_Description);
     })
@@ -55,11 +55,11 @@ const table = () => {
   }
 
   const handleUpdate = () => {
-    axios.put('http://localhost:3001/updateLocation', { Location_ID: editID, Location_Description: ulocation })
+    axios.put('https://node-mysql-chicagocrimes.onrender.com/updateLocation', { Location_ID: editID, Location_Description: ulocation })
     .then(res => {
       console.log(res);
       //location.reload();
-      axios.get('http://localhost:3001/getUsers')
+      axios.get('https://node-mysql-chicagocrimes.onrender.com/getUsers')
       .then(res => {
         setData(res.data);
         toast.success('Location updated!')
@@ -70,13 +70,13 @@ const table = () => {
   }
  
   const handleDelete = (id) => {
-    axios.delete('http://localhost:3001/deleteLocation/'+id)
+    axios.delete('https://node-mysql-chicagocrimes.onrender.com/deleteLocation/'+id)
     .then(res => {
       console.log(res);
       //location.reload();
       toast.success('Location deleted!')
 
-      axios.get('http://localhost:3001/getUsers')
+      axios.get('https://node-mysql-chicagocrimes.onrender.com/getUsers')
       .then(res => {
         setData(res.data);
       })

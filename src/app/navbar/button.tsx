@@ -13,7 +13,7 @@ const Button = () => {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getUser"
+            url: "https://node-mysql-chicagocrimes.onrender.com/getUser"
         }).then(res => setUsername(res.data.email)).catch(err => console.log(err))
 
     }, []);

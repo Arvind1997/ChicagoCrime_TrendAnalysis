@@ -20,7 +20,7 @@ const login = () => {
                 password: loginPassword
             },
             withCredentials: true,
-            url: "http://localhost:3001/login"
+            url: "https://node-mysql-chicagocrimes.onrender.com/login"
         }).then(res => console.log(res)).catch(err => console.log(err));
     }
 

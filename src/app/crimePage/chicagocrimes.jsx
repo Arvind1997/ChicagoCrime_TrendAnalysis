@@ -27,7 +27,7 @@ const ChicagoCrimes = () => {
     const [ editCase, setEditCase ] = useState(-1)
 
     useEffect(() => {
-        axios.get('http://localhost:3001/getChicago')
+        axios.get('https://node-mysql-chicagocrimes.onrender.com/getChicago')
         .then(res => {
             setData(res.data);
             toast.success('Crime records loaded!');
@@ -38,7 +38,7 @@ const ChicagoCrimes = () => {
 
       const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:3001/Chicago',
+        axios.post('https://node-mysql-chicagocrimes.onrender.com/Chicago',
         {
           Case_number: caseNum,
           Primary_Type: pri,
@@ -50,7 +50,7 @@ const ChicagoCrimes = () => {
 
         }).then(res =>{
             console.log(res)
-          axios.get('http://localhost:3001/getChicago')
+          axios.get('https://node-mysql-chicagocrimes.onrender.com/getChicago')
           .then(res => {
             setData(res.data);
             toast.success('Crime details added!')
@@ -61,7 +61,7 @@ const ChicagoCrimes = () => {
       }
     
       const handleEdit = (id) => {
-        axios.get('http://localhost:3001/getChicago', { Case_Number: editCase })
+        axios.get('https://node-mysql-chicagocrimes.onrender.com/getChicago', { Case_Number: editCase })
         .then(res => {
           usetArrest(res.data.Arrest)
           usetLat(res.data.Latitude)
@@ -72,11 +72,11 @@ const ChicagoCrimes = () => {
       }
     
       const handleUpdate = () => {
-        axios.put('http://localhost:3001/updateCrime', { Case_number: editCase, Arrest: uarrest, Latitude: ulat, Longitude: ulong })
+        axios.put('https://node-mysql-chicagocrimes.onrender.com/updateCrime', { Case_number: editCase, Arrest: uarrest, Latitude: ulat, Longitude: ulong })
         .then(res => {
           console.log(res);
           //location.reload();
-          axios.get('http://localhost:3001/getChicago')
+          axios.get('https://node-mysql-chicagocrimes.onrender.com/getChicago')
           .then(res => {
             setData(res.data);
             toast.success('Crime record updated!')
@@ -87,11 +87,11 @@ const ChicagoCrimes = () => {
       }
      
       const handleDelete = (id) => {
-        axios.delete('http://localhost:3001/deleteCrime/'+id)
+        axios.delete('https://node-mysql-chicagocrimes.onrender.com/deleteCrime/'+id)
         .then(res => {
           console.log(res);
           //location.reload();
-          axios.get('http://localhost:3001/getChicago')
+          axios.get('https://node-mysql-chicagocrimes.onrender.com/getChicago')
           .then(res => {setData(res.data);
             toast.success('Crime record deleted!')
           })
